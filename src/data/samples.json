@@ -1,0 +1,33 @@
+[
+  {
+    "id": "SMP-001",
+    "patientName": "John Kamau",
+    "patientId": "PT-10045",
+    "testType": "Malaria RDT",
+    "status": "received",
+    "dateReceived": "2026-10-17",
+    "collectedFrom": "Walk-in",
+    "notes": "Fever and headache"
+  },
+  {
+    "id": "SMP-002",
+    "patientName": "Amina Otieno",
+    "patientId": "PT-10046",
+    "testType": "Full Blood Count",
+    "status": "processing",
+    "dateReceived": "2026-10-16",
+    "collectedFrom": "Clinic referral",
+    "notes": ""
+  },
+  {
+    "id": "SMP-003",
+    "patientName": "David Mwangi",
+    "patientId": "PT-10047",
+    "testType": "HIV Viral Load",
+    "status": "completed",
+    "dateReceived": "2026-10-15",
+    "collectedFrom": "Field collection",
+    "notes": "Follow-up test",
+    "result": "Undetectable"
+  }
+]
