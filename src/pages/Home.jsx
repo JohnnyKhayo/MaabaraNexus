@@ -4,17 +4,17 @@ export default function Home() {
   return (
     <div>
       {/* Hero */}
-      <section className="mx-auto flex max-w-6xl flex-col items-center gap-8 px-4 py-16 md:flex-row">
-        <div className="flex-1">
-          <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+      <section className="mx-auto flex max-w-6xl flex-col items-center gap-10 px-4 py-1 md:flex-row">
+        <div className="flex-1 space-y-5">
+          <h1 className="text-4xl font-bold tracking-tight md:text-4xl">
             Track Every Sample with Precision
           </h1>
-          <p className="mt-4 text-lg text-muted-foreground">
-            SampleNexus helps laboratory teams manage samples from arrival to result — cleanly and accurately.
+          <p className="text-lg text-muted-foreground">
+            MaabaraNexus helps lab teams manage samples from arrival to result; clearly and accurately.
           </p>
           <Link
             to="/samples"
-            className="mt-6 inline-block rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground"
+            className="inline-block rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground"
           >
             View Samples
           </Link>
@@ -22,9 +22,9 @@ export default function Home() {
 
         <div className="flex-1">
           <img
-            src="https://images.pexels.com/photos/3825527/pexels-photo-3825527.jpeg?auto=compress&cs=tinysrgb&w=800"
-            alt="Laboratory technician working with samples"
-            className="rounded-lg object-cover"
+            src=" src/assets/best.hero.jpg"
+            alt="Lab professional handling samples"
+              className="h-80 w-full rounded object-cover shadow-sm md:h-80"
           />
         </div>
       </section>
