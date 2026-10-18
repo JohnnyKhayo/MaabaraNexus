@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import Home from "./pages/Home";
 import SampleList from "./pages/SampleList";
+import Login from "./pages/Login";
 
 import NotFound from "./pages/NotFound";
 import AddSample from "./pages/AddSample";
@@ -18,7 +19,7 @@ function App() {
           <Route path="/samples" element={<SampleList />} />
           <Route path="/samples/new" element={<AddSample />} />
           <Route path="/samples/:id" element={<SampleDetail />} />
-
+          <Route path="/login" element={<Login />} />
 
         </Routes>
       </Layout>
