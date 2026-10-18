@@ -8,6 +8,7 @@ import AddSample from "./pages/AddSample";
 import SampleDetail from "./pages/SampleDetail";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
 
 
 function App() {
@@ -18,7 +19,16 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
 
-          <Route
+            <Route
+    path="/dashboard"
+    element={
+      <ProtectedRoute>
+        <Dashboard />
+      </ProtectedRoute>
+    }
+  />
+
+<Route
             path="/samples"
             element={
               <ProtectedRoute>
@@ -45,6 +55,7 @@ function App() {
 
           <Route path="*" element={<NotFound />} />
           <Route path="/register" element={<Register />} />
+          
         </Routes>
       </Layout>
     </BrowserRouter>

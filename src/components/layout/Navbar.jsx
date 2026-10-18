@@ -14,6 +14,7 @@ function Navbar() {
         <nav className="flex items-center gap-6 text-sm">
           <Link to="/" className="hover:text-primary">Home</Link>
           <Link to="/samples" className="hover:text-primary">Samples</Link>
+          <Link to="/dashboard" className="hover:text-primary">Dashboard</Link>
 
           {user ? (
             <>
