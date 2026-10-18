@@ -43,8 +43,10 @@ export default function Login() {
         </button>
       </form>
       <p className="mt-4 text-center text-sm text-muted-foreground">
-        Demo: staff@lab.com / staff123 &nbsp;|&nbsp; admin@lab.com / admin123
-      </p>
+        Demo: staff@lab.com / staff123 &nbsp;|&nbsp; admin@lab.com / admin123</p>
+    
+     <p className="mt-4 text-center text-sm"> Don’t have an account?{" "}
+      <Link to="/register" className="text-primary hover:underline"> Register </Link> </p>
     </div>
   );
 }

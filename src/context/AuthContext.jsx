@@ -29,12 +29,30 @@ export function AuthProvider({ children }) {
     return found;
   }
 
+  function register(name, email, password) {
+    const exists = mockUsers.find((u) => u.email === email);
+    if (exists) throw new Error("Email already registered");
+
+    const newUser = {
+      id: String(mockUsers.length + 1),
+      name,
+      email,
+      password,
+      role: "staff",
+    };
+
+    mockUsers.push(newUser);
+    setUser(newUser);
+    localStorage.setItem("maabara_user", JSON.stringify(newUser));
+    return newUser;
+  }
+
   function logout() {
     setUser(null);
     localStorage.removeItem("maabara_user");
   }
 
-  const value = { user, login, logout };
+  const value = { user, login, logout, register };
 
   return (
     <AuthContext.Provider value={value}>

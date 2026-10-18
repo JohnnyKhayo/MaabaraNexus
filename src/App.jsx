@@ -7,6 +7,8 @@ import NotFound from "./pages/NotFound";
 import AddSample from "./pages/AddSample";
 import SampleDetail from "./pages/SampleDetail";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Register from "./pages/Register";
+
 
 function App() {
   return (
@@ -42,6 +44,7 @@ function App() {
           />
 
           <Route path="*" element={<NotFound />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </Layout>
     </BrowserRouter>
