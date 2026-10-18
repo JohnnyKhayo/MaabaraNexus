@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import {Link, useNavigate } from "react-router-dom";
 import { addSample } from "../services/api";
+
+
 
 const initialForm = {
   patientName: "",
@@ -10,11 +12,12 @@ const initialForm = {
   notes: "",
 };
 
-export default function AddSample() {
+function AddSample() {
   const [form, setForm] = useState(initialForm);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const [showConfirm, setShowConfirm] = useState(false);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -42,6 +45,9 @@ export default function AddSample() {
   }
 
   return (
+     <>
+
+
     <div className="mx-auto max-w-xl px-4 py-8">
       <h1 className="mb-6 text-2xl font-semibold">Add New Sample</h1>
 
@@ -113,5 +119,7 @@ export default function AddSample() {
         </button>
       </form>
     </div>
+    </>
   );
 }
+export default AddSample
