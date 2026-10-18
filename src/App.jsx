@@ -5,6 +5,7 @@ import SampleList from "./pages/SampleList";
 
 import NotFound from "./pages/NotFound";
 import AddSample from "./pages/AddSample";
+import SampleDetail from "./pages/SampleDetail";
 
 
 function App() {
@@ -16,6 +17,8 @@ function App() {
           <Route path="*" element={<NotFound />} />
           <Route path="/samples" element={<SampleList />} />
           <Route path="/samples/new" element={<AddSample />} />
+          <Route path="/samples/:id" element={<SampleDetail />} />
+
 
         </Routes>
       </Layout>

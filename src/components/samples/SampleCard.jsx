@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const statusStyles = {
   received: "bg-red-100 text-red-800",
   processing: "bg-amber-100 text-amber-800",
@@ -6,7 +8,9 @@ const statusStyles = {
 
 function SampleCard({ sample }) {
   return (
-    <div className="rounded-lg border bg-white p-4 shadow-sm">
+    <>
+    <Link to={`/samples/${sample.id}`} className="block">
+      <div className="rounded-lg border bg-white p-4 shadow-sm hover:shadow"> 
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="font-medium">{sample.patientName}</p>
@@ -25,6 +29,8 @@ function SampleCard({ sample }) {
         <p>Source: {sample.collectedFrom}</p>
       </div>
     </div>
+        </Link>
+    </>
   );
 }
 
