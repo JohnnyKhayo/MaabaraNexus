@@ -48,3 +48,9 @@ export async function updateSample(id, updates) {
   );
   return samples.find((s) => s.id === id);
 }
+
+export async function deleteSample(id) {
+  await new Promise((r) => setTimeout(r, 300));
+  samples = samples.filter((s) => s.id !== id);
+  return true;
+}

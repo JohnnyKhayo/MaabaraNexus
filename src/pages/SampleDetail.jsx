@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
+import { useAuth } from "../context/AuthContext";
 import { useParams, useNavigate } from "react-router-dom";
-import { getSampleById, updateSample } from "../services/api";
+import { getSampleById, updateSample, deleteSample } from "../services/api";
 import { IoArrowBack } from "react-icons/io5";
 
 export default function SampleDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { user } = useAuth();                  
 
   const [sample, setSample] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -13,6 +15,7 @@ export default function SampleDetail() {
   const [status, setStatus] = useState("");
   const [result, setResult] = useState("");
   const [saving, setSaving] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
     async function load() {
@@ -43,6 +46,23 @@ export default function SampleDetail() {
       setSaving(false);
     }
   }
+
+    async function handleDelete() {                
+    if (!window.confirm("Are you sure you want to delete this sample? This action cannot be undone.")) {
+      return;
+    }
+
+    try {
+      setDeleting(true);
+      await deleteSample(id);
+      navigate("/samples");
+    } catch (err) {
+      setError("Failed to delete sample.");
+    } finally {
+      setDeleting(false);
+    }
+  }
+
 
   if (loading) return <div className="py-16 text-center">Loading sample...</div>;
   if (error) return <div className="py-16 text-center text-red-600">{error}</div>;
@@ -83,11 +103,17 @@ export default function SampleDetail() {
             className="mt-1 w-full rounded-md border px-3 py-2" placeholder="Enter result when available"/>
         </div>
 
-        <button
-          type="submit" disabled={saving} className="rounded-md bg-primary px-5 py-2 text-sm font-medium text-primary-foreground disabled:opacity-60">
-          {saving ? "Saving..." : "Update Sample"}
-        </button>
+     <div className="flex items-center gap-3 pt-2">
+        <button type="submit" disabled={saving} className="rounded-md bg-primary px-5 py-2 text-sm font-medium text-primary-foreground disabled:opacity-60"> {saving ? "Saving..." : "Update Sample"}</button> 
+        {user?.role === "admin" && (
+     <button type="button" onClick={handleDelete} disabled={deleting}
+      className="rounded-md bg-red-600 px-5 py-2 text-sm font-medium text-white hover:bg-red-700 disabled:opacity-60">
+      {deleting ? "Deleting..." : "Delete Sample"}
+     </button>
+     )}
+     </div>
       </form>
     </div>
+    
   );
 }
