@@ -9,14 +9,21 @@ export default function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     setError("");
-    try {
-      login(email, password);
+    
+      try {
+      await login(email, password);
       navigate("/samples");
     } catch (err) {
-      setError(err.message);
+      if (err.code === "auth/user-not-found" || err.code === "auth/invalid-credential") {
+        setError("No account found with this email or wrong password.");
+      } else if (err.code === "auth/wrong-password") {
+        setError("Incorrect password.");
+      } else {
+        setError("Login failed. Please try again.");
+      }
     }
   }
 

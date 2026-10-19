@@ -1,52 +1,63 @@
-import samplesData from "../data/samples.json";
+import { 
+  collection, 
+  getDocs, 
+  addDoc, 
+  doc, 
+  getDoc, 
+  updateDoc, 
+  deleteDoc,
+  query,
+  orderBy 
+} from "firebase/firestore";
+import { db } from "../firebase";
 
-let samples = [...samplesData];
+const samplesCollection = collection(db, "samples");
 
 export async function getSamples() {
-  // Small delay to feel like a real request
-  await new Promise((resolve) => setTimeout(resolve, 500));
-  return samples;
+  const q = query(samplesCollection, orderBy("dateReceived", "desc"));
+  const snapshot = await getDocs(q);
+  return snapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
 }
 
 export async function addSample(formData) {
-  await new Promise((resolve) => setTimeout(resolve, 400));
-
-  const newIdNumber = samples.length + 1;
-  const sampleId = "SMP-" + String(newIdNumber).padStart(3, "0");
-
   const newSample = {
-    id: sampleId,
-    status: "received",
-    dateReceived: new Date().toISOString().split("T")[0],
     patientName: formData.patientName,
     patientId: formData.patientId,
     testType: formData.testType,
     collectedFrom: formData.collectedFrom,
     notes: formData.notes || "",
+    status: "received",
+    dateReceived: new Date().toISOString().split("T")[0],
+    createdAt: new Date().toISOString(),
   };
 
-  samples = [newSample, ...samples];
-
-  return newSample;
+  const docRef = await addDoc(samplesCollection, newSample);
+  return { id: docRef.id, ...newSample };
 }
 
 export async function getSampleById(id) {
-  await new Promise((r) => setTimeout(r, 400));
-  const sample = samples.find((s) => s.id === id);
-  if (!sample) throw new Error("Sample not found");
-  return sample;
+  const docRef = doc(db, "samples", id);
+  const snapshot = await getDoc(docRef);
+
+  if (!snapshot.exists()) {
+    throw new Error("Sample not found");
+  }
+
+  return { id: snapshot.id, ...snapshot.data() };
 }
 
 export async function updateSample(id, updates) {
-  await new Promise((r) => setTimeout(r, 400));
-  samples = samples.map((s) =>
-    s.id === id ? { ...s, ...updates } : s
-  );
-  return samples.find((s) => s.id === id);
+  const docRef = doc(db, "samples", id);
+  await updateDoc(docRef, updates);
+  const updated = await getDoc(docRef);
+  return { id: updated.id, ...updated.data() };
 }
 
 export async function deleteSample(id) {
-  await new Promise((r) => setTimeout(r, 300));
-  samples = samples.filter((s) => s.id !== id);
+  const docRef = doc(db, "samples", id);
+  await deleteDoc(docRef);
   return true;
 }
