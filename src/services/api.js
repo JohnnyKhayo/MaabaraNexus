@@ -1,16 +1,13 @@
 import samplesData from "../data/samples.json";
 
-// Working copy of the data (so we can add new samples)
 let samples = [...samplesData];
 
-// Getting all samples
 export async function getSamples() {
   // Small delay to feel like a real request
   await new Promise((resolve) => setTimeout(resolve, 500));
   return samples;
 }
 
-// Add a new sample
 export async function addSample(formData) {
   await new Promise((resolve) => setTimeout(resolve, 400));
 
@@ -28,7 +25,6 @@ export async function addSample(formData) {
     notes: formData.notes || "",
   };
 
-  // new sample to list top
   samples = [newSample, ...samples];
 
   return newSample;

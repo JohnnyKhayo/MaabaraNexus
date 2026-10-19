@@ -45,7 +45,7 @@ function Dashboard() {
       <div className="mt-8">
         <Link
           to="/samples" className="text-sm font-medium text-primary hover:underline">
-          View all samples →
+          View all samples
         </Link>
       </div>
     </div>

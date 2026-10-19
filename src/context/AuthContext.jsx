@@ -4,7 +4,10 @@ const AuthContext = createContext();
 
 const mockUsers = [
   { id: "1", name: "Lab Staff", email: "staff@lab.com", password: "staff123", role: "staff" },
-  { id: "2", name: "Lab Admin", email: "admin@lab.com", password: "admin123", role: "admin" },
+  { id: "2", name: "Amina Otieno", email: "amina.lab@lab.com", password: "amina123", role: "staff" },
+  { id: "3", name: "David Mwangi", email: "david.tech@lab.com", password: "david123", role: "staff" },
+  { id: "4", name: "Lab Admin", email: "admin@lab.com", password: "admin123", role: "admin" },
+  { id: "5", name: "Lab Supervisor", email: "supervisor@lab.com", password: "super123", role: "admin" },
 ];
 
 export function AuthProvider({ children }) {
