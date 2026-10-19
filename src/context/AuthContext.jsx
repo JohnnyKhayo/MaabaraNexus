@@ -1,65 +1,71 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import { 
+  createUserWithEmailAndPassword, 
+  signInWithEmailAndPassword, 
+  signOut, 
+  onAuthStateChanged 
+} from "firebase/auth";
+import { doc, setDoc, getDoc } from "firebase/firestore";
+import { auth, db } from "../firebase";
 
 const AuthContext = createContext();
 
-const mockUsers = [
-  { id: "1", name: "Lab Staff", email: "staff@lab.com", password: "staff123", role: "staff" },
-  { id: "2", name: "Amina Otieno", email: "amina.lab@lab.com", password: "amina123", role: "staff" },
-  { id: "3", name: "David Mwangi", email: "david.tech@lab.com", password: "david123", role: "staff" },
-  { id: "4", name: "Lab Admin", email: "admin@lab.com", password: "admin123", role: "admin" },
-  { id: "5", name: "Lab Supervisor", email: "supervisor@lab.com", password: "super123", role: "admin" },
-];
-
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // here load user from localStorage on first render
+  // Listen for auth state changes
   useEffect(() => {
-    const saved = localStorage.getItem("maabara_user");
-    if (saved) {
-      setUser(JSON.parse(saved));
-    }
+    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+      if (firebaseUser) {
+        // Get extra user data (role, name) from Firestore
+        const userDoc = await getDoc(doc(db, "users", firebaseUser.uid));
+        const userData = userDoc.exists() ? userDoc.data() : {};
+
+        setUser({
+          uid: firebaseUser.uid,
+          email: firebaseUser.email,
+          name: userData.name || "",
+          role: userData.role || "staff",
+        });
+      } else {
+        setUser(null);
+      }
+      setLoading(false);
+    });
+
+    return unsubscribe;
   }, []);
 
-  function login(email, password) {
-    const found = mockUsers.find(
-      (u) => u.email === email && u.password === password
-    );
-    if (!found) throw new Error("Invalid email or password");
+  async function register(name, email, password) {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const firebaseUser = userCredential.user;
 
-    setUser(found);
-    localStorage.setItem("maabara_user", JSON.stringify(found));
-    return found;
-  }
-
-  function register(name, email, password) {
-    const exists = mockUsers.find((u) => u.email === email);
-    if (exists) throw new Error("Email already registered");
-
-    const newUser = {
-      id: String(mockUsers.length + 1),
+    // Save extra info in Firestore
+    await setDoc(doc(db, "users", firebaseUser.uid), {
       name,
       email,
-      password,
-      role: "staff",
-    };
+      role: "staff", // default role
+      createdAt: new Date().toISOString(),
+    });
 
-    mockUsers.push(newUser);
-    setUser(newUser);
-    localStorage.setItem("maabara_user", JSON.stringify(newUser));
-    return newUser;
+    return firebaseUser;
+  }
+
+  async function login(email, password) {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    return userCredential.user;
   }
 
   function logout() {
-    setUser(null);
-    localStorage.removeItem("maabara_user");
+    return signOut(auth);
   }
 
-  const value = { user, login, logout, register };
+  const value = { user, login, logout, register, loading };
 
   return (
     <AuthContext.Provider value={value}>
-      {children}
+      {!loading && children}
     </AuthContext.Provider>
   );
 }
