@@ -4,8 +4,14 @@ import { FiClock, FiUsers, FiAward, FiTarget, FiEye, FiHeart } from "react-icons
 function Home() {
   return (
     <div>
+              {/* Optional top accent bar */}
+      <section className="bg-blue-800 py-2.5 text-center text-sm text-white">
+        Reliable laboratory results with careful sample handling.
+        <Link to="/contact" className="ml-2 underline">Contact us</Link>
+      </section>
+
       {/* Hero Section */}
-      <section className="py-10 md:py-14">
+      <section className="py-8 md:py-8">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 px-4 md:flex-row">
           <div className="flex-1">
             <h1 className="text-4xl font-bold md:text-5xl">
@@ -35,7 +41,7 @@ function Home() {
       </section>
 
       {/* Trust Bar */}
-      <section className="border-y bg-gray-50 py-5">
+      <section className="border-y bg-slate-50 py-5">
         <div className="mx-auto flex max-w-6xl flex-wrap justify-center gap-8 px-4 text-sm text-gray-600 md:justify-between">
           <div className="flex items-center gap-2">
             <FiClock className="text-primary" /> 7+ Years Experience
@@ -50,12 +56,12 @@ function Home() {
       </section>
 
       {/* Services */}
-      <section className="py-10">
+      <section className="py-8 bg-white">
         <div className="mx-auto max-w-6xl px-4">
           <h2 className="mb-6 text-center text-2xl font-semibold">Our Services</h2>
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <div className="overflow-hidden rounded-lg border bg-white shadow-sm">
+            <div className="overflow-hidden rounded-lg border bg-stone-50 shadow-sm">
               <img
                 src="https://images.pexels.com/photos/3786157/pexels-photo-3786157.jpeg?auto=compress&cs=tinysrgb&w=500"
                 alt="Blood test"
@@ -67,7 +73,7 @@ function Home() {
               </div>
             </div>
 
-            <div className="overflow-hidden rounded-lg border bg-white shadow-sm">
+            <div className="overflow-hidden rounded-lg border bg-stone-50 shadow-sm">
               <img
                 src="https://images.pexels.com/photos/4226896/pexels-photo-4226896.jpeg?auto=compress&cs=tinysrgb&w=500"
                 alt="Urine test"
@@ -79,7 +85,7 @@ function Home() {
               </div>
             </div>
 
-            <div className="overflow-hidden rounded-lg border bg-white shadow-sm">
+            <div className="overflow-hidden rounded-lg border bg-stone-50 shadow-sm">
               <img
                 src="https://images.pexels.com/photos/5726837/pexels-photo-5726837.jpeg?auto=compress&cs=tinysrgb&w=500"
                 alt="Stool test"
@@ -91,7 +97,7 @@ function Home() {
               </div>
             </div>
 
-            <div className="overflow-hidden rounded-lg border bg-white shadow-sm">
+            <div className="overflow-hidden rounded-lg border bg-stone-50 shadow-sm">
               <img
                 src="https://images.pexels.com/photos/3735747/pexels-photo-3735747.jpeg?auto=compress&cs=tinysrgb&w=500"
                 alt="Culture"
@@ -103,7 +109,7 @@ function Home() {
               </div>
             </div>
 
-            <div className="overflow-hidden rounded-lg border bg-white shadow-sm">
+            <div className="overflow-hidden rounded-lg border bg-stone-50 shadow-sm">
               <img
                 src="https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=500"
                 alt="Mycology"
@@ -115,7 +121,7 @@ function Home() {
               </div>
             </div>
 
-            <div className="overflow-hidden rounded-lg border bg-white shadow-sm">
+            <div className="overflow-hidden rounded-lg border bg-stone-50 shadow-sm">
               <img
                 src="https://images.pexels.com/photos/3825586/pexels-photo-3825586.jpeg?auto=compress&cs=tinysrgb&w=500"
                 alt="Food handlers"
@@ -135,7 +141,7 @@ function Home() {
       </section>
 
       {/* Mission Vision Values */}
-      <section className="bg-gray-50 py-10">
+      <section className="bg-blue-50 py-10">
         <div className="mx-auto grid max-w-6xl gap-6 px-4 md:grid-cols-3">
           <div className="rounded bg-white p-5">
             <FiTarget className="mb-2 text-2xl text-primary" />
