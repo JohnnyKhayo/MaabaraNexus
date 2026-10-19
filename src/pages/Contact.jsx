@@ -28,14 +28,19 @@ export default function Contact() {
             info@maabaranexus.com
           </a>
         </p>
-        
-        <p>
+
+        <p className="text-green-500">
           WhatsApp:{" "}
           <a
             href="https://wa.me/254700000000" target="_blank" rel="noreferrer" className="text-primary hover:underline">
             +254 700 000 000
           </a>
         </p>
+        
+      </div>
+      <div className="mb-6 rounded-md bg-stone-100 p-4 text-sm">
+      <p className="font-medium">Opening Hours</p>
+      <p className="mt-1 text-muted-foreground"> <strong>We are open 24 hours a day, 7 days a week.</strong></p>
       </div>
 
       {submitted ? (
@@ -50,7 +55,8 @@ export default function Contact() {
 
         </div>
 
-      ) : (
+      ) :  (
+        
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium">Name</label>
@@ -81,6 +87,7 @@ export default function Contact() {
 
         </form>
       )}
+      
     </div>
   );
 }
