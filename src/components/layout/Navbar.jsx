@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
-function Navbar() {
+export default function Navbar() {
   const { user, logout } = useAuth();
 
   return (
@@ -13,27 +13,39 @@ function Navbar() {
 
         <nav className="flex items-center gap-6 text-sm">
           <Link to="/" className="hover:text-primary">Home</Link>
-          <Link to="/samples" className="hover:text-primary">Samples</Link>
-          <Link to="/dashboard" className="hover:text-primary">Dashboard</Link>
+          <Link to="/about" className="hover:text-primary">About</Link>
+          <Link to="/contact" className="hover:text-primary">Contact</Link>
 
           {user ? (
             <>
-              <span className="text-muted-foreground">
-                {user.name} ({user.role})
-              </span>
+              {(user.role === "staff" || user.role === "admin") && (
+                <>
+                  <Link to="/dashboard" className="hover:text-primary">Dashboard</Link>
+                  <Link to="/samples" className="hover:text-primary">Samples</Link>
+                </>
+              )}
               <button onClick={logout} className="hover:text-primary">
                 Logout
               </button>
             </>
           ) : (
-            <Link to="/login" className="hover:text-primary">
-              Login
-            </Link>
+            <div className="flex items-center gap-3">
+              <Link
+                to="/login"
+                className="rounded-md border border-primary px-3 py-1.5 text-primary hover:bg-primary/5"
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                className="rounded-md bg-primary px-3 py-1.5 text-primary-foreground"
+              >
+                Register
+              </Link>
+            </div>
           )}
         </nav>
       </div>
     </header>
   );
 }
-
-export default Navbar
