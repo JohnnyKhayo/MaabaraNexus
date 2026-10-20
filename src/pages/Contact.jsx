@@ -24,8 +24,8 @@ export default function Contact() {
       <div className="mb-8 space-y-1 text-sm">
         <p>
           Email:{" "}
-          <a href="mailto:info@maabaranexus.com" className="text-primary hover:underline">
-            info@maabaranexus.com
+          <a href="mailto:info@maabaralabs.com" className="text-primary hover:underline">
+            info@maabaralabs.com
           </a>
         </p>
 

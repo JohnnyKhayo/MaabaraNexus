@@ -26,36 +26,31 @@ function App() {
           <Route path="/register" element={<Register />} />
 
           <Route
-            path="/dashboard"
-            element={
+            path="/dashboard" element={
               <ProtectedRoute>
                 <Dashboard />
-              </ProtectedRoute>
-            }/>
+              </ProtectedRoute>}/>
 
           <Route
             path="/samples"
             element={
               <ProtectedRoute>
                 <SampleList />
-              </ProtectedRoute>
-            }/>
+              </ProtectedRoute>}/>
 
           <Route
             path="/samples/new"
             element={
               <ProtectedRoute>
                 <AddSample />
-              </ProtectedRoute>
-            }/>
+              </ProtectedRoute>}/>
 
           <Route
             path="/samples/:id"
             element={
               <ProtectedRoute>
                 <SampleDetail />
-              </ProtectedRoute>
-            }/>
+              </ProtectedRoute>}/>
 
           <Route path="*" element={<NotFound />} />
         </Routes>

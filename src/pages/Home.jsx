@@ -1,40 +1,55 @@
 import { Link } from "react-router-dom";
+import heroImage from "../assets/best.hero.jpg";
+import phlebotomyImg from "../assets/phlebotomy.jpg";
+import urinalysisImg from "../assets/urinalysis.jpg";
+import stoolImg from "../assets/stool.smear.jpg";
+import cultureImg from "../assets/culture.sensitivity.jpg";
+import fungiImg from "../assets/fungi.jpg";
+import foodHandlersImg from "../assets/food.handlers.jpg";
 import { FiClock, FiUsers, FiAward, FiTarget, FiEye, FiHeart } from "react-icons/fi";
 
-function Home() {
+export default function Home() {
+  const services = [
+    { title: "Phlebotomy & Blood Tests", desc: "Safe blood collection and routine tests.", img: phlebotomyImg },
+    { title: "Urinalysis", desc: "Urine tests for infection and health screening.", img: urinalysisImg },
+    { title: "Stool Analysis", desc: "Tests for parasites and digestive issues.", img: stoolImg },
+    { title: "Culture & Sensitivity", desc: "Bacterial culture and antibiotic testing.", img: cultureImg },
+    { title: "Mycology", desc: "Fungal infection testing and identification.", img: fungiImg },
+    { title: "Food Handlers Tests", desc: "Medical screening for food industry workers.", img: foodHandlersImg },
+  ];
+
   return (
     <div>
-              {/* Optional top accent bar */}
+      {/* Top accent bar */}
       <section className="bg-blue-800 py-2.5 text-center text-sm text-white">
-        Reliable laboratory results with careful sample handling.
-        <Link to="/contact" className="ml-2 underline">Contact us</Link>
+        Reliable laboratory results with careful sample handling.{" "}
+        <Link to="/contact" className="underline">Contact us</Link>
       </section>
 
-      {/* Hero Section */}
-      <section className="py-8 md:py-8">
+      {/* Hero */}
+      <section className="py-10 md:py-14">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 px-4 md:flex-row">
           <div className="flex-1">
-            <h1 className="text-4xl font-bold md:text-5xl">
+            <h1 className="text-3xl font-bold sm:text-4xl md:text-5xl">
               Accurate Testing. Trusted Results.
             </h1>
-            <p className="mt-4 text-lg text-gray-600">
+            <p className="mt-4 text-base text-gray-600 sm:text-lg">
               Professional laboratory services with careful sample handling and clear results you can rely on.
             </p>
-            <div className="mt-6 flex gap-3">
-              <Link to="/contact" className="rounded bg-primary px-5 py-2 text-white">
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link to="/contact" className="rounded bg-primary px-5 py-2.5 text-sm text-white">
                 Book a Test
               </Link>
-              <Link to="/services" className="rounded border px-5 py-2">
+              <Link to="/services" className="rounded border px-5 py-2.5 text-sm">
                 Our Services
               </Link>
             </div>
           </div>
-
           <div className="flex-1">
             <img
-              src="/src/assets/best.hero.jpg"
-              alt="Lab professional"
-              className="h-64 w-full rounded-lg object-cover md:h-80"
+              src={heroImage}
+              alt="Two lab professionals working at the bench"
+              className="h-64 w-full rounded-lg object-cover sm:h-72 md:h-80"
             />
           </div>
         </div>
@@ -42,100 +57,36 @@ function Home() {
 
       {/* Trust Bar */}
       <section className="border-y bg-slate-50 py-5">
-        <div className="mx-auto flex max-w-6xl flex-wrap justify-center gap-8 px-4 text-sm text-gray-600 md:justify-between">
-          <div className="flex items-center gap-2">
-            <FiClock className="text-primary" /> 7+ Years Experience
-          </div>
-          <div className="flex items-center gap-2">
-            <FiUsers className="text-primary" /> Trusted by Patients & Clinics
-          </div>
-          <div className="flex items-center gap-2">
-            <FiAward className="text-primary" /> Quality Laboratory Services
-          </div>
+        <div className="mx-auto flex max-w-6xl flex-wrap justify-center gap-6 px-4 text-sm text-gray-600 md:justify-between">
+          <div className="flex items-center gap-2"><FiClock className="text-primary" /> 7+ Years Experience</div>
+          <div className="flex items-center gap-2"><FiUsers className="text-primary" /> Trusted by Patients & Clinics</div>
+          <div className="flex items-center gap-2"><FiAward className="text-primary" /> Quality Laboratory Services</div>
         </div>
       </section>
 
       {/* Services */}
-      <section className="py-8 bg-white">
+      <section className="bg-white py-10">
         <div className="mx-auto max-w-6xl px-4">
           <h2 className="mb-6 text-center text-2xl font-semibold">Our Services</h2>
-
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <div className="overflow-hidden rounded-lg border bg-stone-50 shadow-sm">
-              <img
-                src="https://images.pexels.com/photos/3786157/pexels-photo-3786157.jpeg?auto=compress&cs=tinysrgb&w=500"
-                alt="Blood test"
-                className="h-40 w-full object-cover"
-              />
-              <div className="p-4">
-                <h3 className="font-medium">Phlebotomy & Blood Tests</h3>
-                <p className="mt-1 text-sm text-gray-600">Safe blood collection and routine tests.</p>
+            {services.map((service) => (
+              <div key={service.title} className="overflow-hidden rounded-lg border bg-stone-50 shadow-sm">
+                <img
+                  src={service.img}
+                  alt={service.title}
+                  className="h-40 w-full object-cover"
+                />
+                <div className="p-4">
+                  <h3 className="font-medium">{service.title}</h3>
+                  <p className="mt-1 text-sm text-gray-600">{service.desc}</p>
+                </div>
               </div>
-            </div>
-
-            <div className="overflow-hidden rounded-lg border bg-stone-50 shadow-sm">
-              <img
-                src="https://images.pexels.com/photos/4226896/pexels-photo-4226896.jpeg?auto=compress&cs=tinysrgb&w=500"
-                alt="Urine test"
-                className="h-40 w-full object-cover"
-              />
-              <div className="p-4">
-                <h3 className="font-medium">Urinalysis</h3>
-                <p className="mt-1 text-sm text-gray-600">Urine tests for infection and health screening.</p>
-              </div>
-            </div>
-
-            <div className="overflow-hidden rounded-lg border bg-stone-50 shadow-sm">
-              <img
-                src="https://images.pexels.com/photos/5726837/pexels-photo-5726837.jpeg?auto=compress&cs=tinysrgb&w=500"
-                alt="Stool test"
-                className="h-40 w-full object-cover"
-              />
-              <div className="p-4">
-                <h3 className="font-medium">Stool Analysis</h3>
-                <p className="mt-1 text-sm text-gray-600">Tests for parasites and digestive issues.</p>
-              </div>
-            </div>
-
-            <div className="overflow-hidden rounded-lg border bg-stone-50 shadow-sm">
-              <img
-                src="https://images.pexels.com/photos/3735747/pexels-photo-3735747.jpeg?auto=compress&cs=tinysrgb&w=500"
-                alt="Culture"
-                className="h-40 w-full object-cover"
-              />
-              <div className="p-4">
-                <h3 className="font-medium">Culture & Sensitivity</h3>
-                <p className="mt-1 text-sm text-gray-600">Bacterial culture and antibiotic testing.</p>
-              </div>
-            </div>
-
-            <div className="overflow-hidden rounded-lg border bg-stone-50 shadow-sm">
-              <img
-                src="https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=500"
-                alt="Mycology"
-                className="h-40 w-full object-cover"
-              />
-              <div className="p-4">
-                <h3 className="font-medium">Mycology</h3>
-                <p className="mt-1 text-sm text-gray-600">Fungal infection testing and identification.</p>
-              </div>
-            </div>
-
-            <div className="overflow-hidden rounded-lg border bg-stone-50 shadow-sm">
-              <img
-                src="https://images.pexels.com/photos/3825586/pexels-photo-3825586.jpeg?auto=compress&cs=tinysrgb&w=500"
-                alt="Food handlers"
-                className="h-40 w-full object-cover"
-              />
-              <div className="p-4">
-                <h3 className="font-medium">Food Handlers Tests</h3>
-                <p className="mt-1 text-sm text-gray-600">Medical screening for food industry workers.</p>
-              </div>
-            </div>
+            ))}
           </div>
-
           <div className="mt-6 text-center">
-            <Link to="/services" className="text-primary hover:underline">View all services</Link>
+            <Link to="/services" className="text-primary hover:underline">
+              View all services
+            </Link>
           </div>
         </div>
       </section>
@@ -162,15 +113,16 @@ function Home() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-10 text-center">
-        <h2 className="text-2xl font-semibold">Need a laboratory test?</h2>
-        <p className="mt-2 text-gray-600">Contact us today to book or ask any questions.</p>
-        <Link to="/contact" className="mt-4 inline-block rounded bg-primary px-6 py-2 text-white">
+      <section className="border-t py-8 text-center">
+        <h2 className="text-xl font-semibold">Need a laboratory test?</h2>
+        <p className="mt-1 text-sm text-gray-600">Contact us to book or ask any questions.</p>
+        <Link
+          to="/contact"
+          className="mt-3 inline-block rounded-md bg-primary px-5 py-2 text-sm font-medium text-white"
+        >
           Contact Us
         </Link>
       </section>
     </div>
   );
 }
-
-export default Home;

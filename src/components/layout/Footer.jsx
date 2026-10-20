@@ -25,19 +25,18 @@ export default function Footer() {
 
           <div>
             <h4 className="text-sm font-medium">Contact</h4>
+
             <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
               <li>
                 <a href="mailto:info@maabaranexus.com" className="hover:text-primary">
-                  info@maabaranexus.com
+                  info@maabaralabs.com
                 </a>
               </li>
+
               <li>
                 <a
-                  href="https://wa.me/254700000000"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hover:text-primary"
-                >
+                  href="https://wa.me/254700000000" target="_blank" rel="noreferrer"
+                  className="hover:text-primary">
                   WhatsApp
                 </a>
               </li>
@@ -54,7 +53,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 border-t pt-6 text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} MaabaraNexus. All rights reserved.
+          © {new Date().getFullYear()} MaabaraLabs. All rights reserved.
         </div>
       </div>
     </footer>

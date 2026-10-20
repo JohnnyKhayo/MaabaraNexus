@@ -98,8 +98,7 @@ function AddSample() {
         {!showConfirm ? (
           <button
             type="submit"
-            className="rounded-md bg-primary px-5 py-2 text-sm font-medium text-primary-foreground"
-          >
+            className="rounded-md bg-primary px-5 py-2 text-sm font-medium text-primary-foreground">
             Review & Add Sample
           </button>
         ) : (
@@ -107,6 +106,7 @@ function AddSample() {
             <p className="text-sm font-medium text-amber-800">
               Please confirm the sample details are correct before adding.
             </p>
+
             <div className="mt-3 flex gap-3">
               <button
                 type="button" onClick={handleConfirm} disabled={submitting}

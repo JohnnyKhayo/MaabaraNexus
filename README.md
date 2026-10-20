@@ -1,4 +1,4 @@
-# MaabaraNexus
+# MaabaraLabs
 
 A modern laboratory platform that allows the public to explore diagnostic services while giving laboratory staff and administrators a secure system to track samples from arrival to result.
 
@@ -8,7 +8,7 @@ Many laboratories still rely on manual processes to track samples. This increase
 
 ## Solution
 
-MaabaraNexus solves both problems in one application:
+MaabaraLabs solves both problems in one application:
 
 - **Public users** can learn about laboratory services, read about the lab, and get in touch.
 - **Staff and Admin** can securely manage samples with role-based access, search, filtering, and status updates.

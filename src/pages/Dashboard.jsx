@@ -32,10 +32,12 @@ function Dashboard() {
           <p className="text-sm text-muted-foreground">Received</p>
           <p className="mt-1 text-3xl font-semibold text-red-600">{received}</p>
         </div>
+
         <div className="rounded-lg border bg-white p-5">
           <p className="text-sm text-muted-foreground">Processing</p>
           <p className="mt-1 text-3xl font-semibold text-amber-600">{processing}</p>
         </div>
+        
         <div className="rounded-lg border bg-white p-5">
           <p className="text-sm text-muted-foreground">Completed</p>
           <p className="mt-1 text-3xl font-semibold text-green-600">{completed}</p>
