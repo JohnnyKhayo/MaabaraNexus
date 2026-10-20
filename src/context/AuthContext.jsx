@@ -45,7 +45,7 @@ export function AuthProvider({ children }) {
     await setDoc(doc(db, "users", firebaseUser.uid), {
       name,
       email,
-      role: "staff", // default role
+      role: "user", // default role
       createdAt: new Date().toISOString(),
     });
 
