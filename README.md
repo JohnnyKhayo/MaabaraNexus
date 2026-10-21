@@ -125,7 +125,7 @@ src/
 ├── services/
 ├── firebase.js
 └── App.jsx
-## Auther
+## Author
 Johnstone Khayo
 React Frontend Capstone Project
 
