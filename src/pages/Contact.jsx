@@ -33,7 +33,7 @@ export default function Contact() {
           WhatsApp:{" "}
           <a
             href="https://wa.me/254700000000" target="_blank" rel="noreferrer" className="text-primary hover:underline">
-            +254 700 000 000
+            +254 712 345 678
           </a>
         </p>
         
@@ -48,8 +48,7 @@ export default function Contact() {
           <p className="font-medium">Message sent</p>
           <p className="mt-1 text-sm">Thank you. We'll get back to you soon.</p>
           <button
-            onClick={() => setSubmitted(false)}
-            className="mt-3 text-sm text-primary hover:underline">
+            onClick={() => setSubmitted(false)} className="mt-3 text-sm text-primary hover:underline">
             Send another message
           </button>
 

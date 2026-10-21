@@ -73,7 +73,7 @@ export default function Navbar() {
           )}
         </nav>
 
-        {/* Hamburger (Mobile) */}
+        {/* Hamburger*/}
         <button
           className="md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -85,47 +85,60 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {mobileOpen && (
         <div className="border-t bg-white px-4 py-4 md:hidden">
-          <div className="flex flex-col gap-4 text-sm">
-            <Link to="/" onClick={() => setMobileOpen(false)} className="hover:text-primary">Home</Link>
-            <Link to="/services" onClick={() => setMobileOpen(false)} className="hover:text-primary">Services</Link>
-            <Link to="/about" onClick={() => setMobileOpen(false)} className="hover:text-primary">About</Link>
-            <Link to="/contact" onClick={() => setMobileOpen(false)} className="hover:text-primary">Contact</Link>
+            <div className="flex flex-col gap-4 text-sm">
+      <Link to="/" onClick={() => setMobileOpen(false)} className="hover:text-primary">Home</Link>
+      <Link to="/services" onClick={() => setMobileOpen(false)} className="hover:text-primary">Services</Link>
+      <Link to="/about" onClick={() => setMobileOpen(false)} className="hover:text-primary">About</Link>
+      <Link to="/contact" onClick={() => setMobileOpen(false)} className="hover:text-primary">Contact</Link>
 
-            {user ? (
-              <>
-                {(user.role === "staff" || user.role === "admin") && (
-                  <>
-                    <Link to="/dashboard" onClick={() => setMobileOpen(false)} className="hover:text-primary">Dashboard</Link>
-                    <Link to="/samples" onClick={() => setMobileOpen(false)} className="hover:text-primary">Samples</Link>
-                  </>
-                )}
-                <div className="border-t pt-3">
-                  <p className="font-medium">{user.name || "User"}</p>
-                  <p className="text-xs text-muted-foreground">{user.email}</p>
-                  <button
-                    onClick={() => {
-                      logout();
-                      setMobileOpen(false);
-                    }}
-                    className="mt-2 text-left text-sm text-red-600"
-                  >
-                    Logout
-                  </button>
-                </div>
-              </>
-            ) : (
-              <div className="flex flex-col gap-2 border-t pt-3">
-                <Link to="/login" onClick={() => setMobileOpen(false)} className="rounded-md border border-primary px-3 py-1.5 text-center text-primary">
-                  Login
-                </Link>
-                <Link to="/register" onClick={() => setMobileOpen(false)} className="rounded-md bg-primary px-3 py-1.5 text-center text-primary-foreground">
-                  Register
-                </Link>
-              </div>
-            )}
-          </div>
+      {user && (user.role === "staff" || user.role === "admin") && (
+        <>
+          <Link to="/dashboard" onClick={() => setMobileOpen(false)} className="hover:text-primary">Dashboard</Link>
+          <Link to="/samples" onClick={() => setMobileOpen(false)} className="hover:text-primary">Samples</Link>
+        </>
+      )}
+
+      {/* User section - only shows details when clicked */}
+      {user ? (
+        <div className="border-t pt-3">
+          <button
+            onClick={() => setOpen(!open)}
+            className="flex items-center gap-2 text-left"
+          >
+            <FiUser className="text-lg" />
+            <span>Account</span>
+          </button>
+
+          {open && (
+            <div className="mt-2 pl-6">
+              <p className="font-medium">{user.name || "User"}</p>
+              <p className="text-xs text-muted-foreground">{user.email}</p>
+              <button
+                onClick={() => {
+                  logout();
+                  setMobileOpen(false);
+                  setOpen(false);
+                }}
+                className="mt-2 text-sm text-red-600"
+              >
+                Logout
+              </button>
+            </div>
+          )}
+        </div>
+      ) : (
+        <div className="flex flex-col gap-2 border-t pt-3">
+          <Link to="/login" onClick={() => setMobileOpen(false)} className="rounded-md border border-primary px-3 py-1.5 text-center text-primary">
+            Login
+          </Link>
+          <Link to="/register" onClick={() => setMobileOpen(false)} className="rounded-md bg-primary px-3 py-1.5 text-center text-primary-foreground">
+            Register
+          </Link>
         </div>
       )}
+    </div>
+  </div>
+)}
     </header>
   );
 }

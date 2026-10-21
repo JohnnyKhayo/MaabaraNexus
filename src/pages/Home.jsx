@@ -17,9 +17,9 @@ export default function Home() {
     { title: "Mycology", desc: "Fungal infection testing and identification.", img: fungiImg },
     { title: "Food Handlers Tests", desc: "Medical screening for food industry workers.", img: foodHandlersImg },
   ];
-
+  
   return (
-    <div>
+  <div>
       {/* Top accent bar */}
       <section className="bg-blue-800 py-2.5 text-center text-sm text-white">
         Reliable laboratory results with careful sample handling.{" "}
@@ -28,39 +28,38 @@ export default function Home() {
 
       {/* Hero */}
       <section className="py-10 md:py-14">
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 px-4 md:flex-row">
-          <div className="flex-1">
-            <h1 className="text-3xl font-bold sm:text-4xl md:text-5xl">
-              Accurate Testing. Trusted Results.
-            </h1>
-            <p className="mt-4 text-base text-gray-600 sm:text-lg">
-              Professional laboratory services with careful sample handling and clear results you can rely on.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Link to="/contact" className="rounded bg-primary px-5 py-2.5 text-sm text-white">
-                Book a Test
-              </Link>
-              <Link to="/services" className="rounded border px-5 py-2.5 text-sm">
-                Our Services
-              </Link>
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-4 md:flex-row md:gap-8">
+            <div className="flex-1 text-center md:text-left">
+                <h1 className="text-3xl font-bold sm:text-4xl md:text-5xl">
+                    Accurate Testing. Trusted Results.
+                    </h1>
+
+        <p className="mt-3 text-base text-gray-600 sm:text-lg">
+            Professional laboratory services with careful sample handling and clear results you can rely on.
+                        </p>
+
+                <div className="mt-5 flex flex-wrap justify-center gap-3 md:justify-start">
+                            <Link to="/contact" className="rounded bg-primary px-5 py-2.5 text-sm text-white">
+                            Book a Test
+                            </Link>
+            <Link to="/services" className="rounded border px-5 py-2.5 text-sm">
+                    Our Services
+                     </Link>
+                        </div>
+                            </div>
+
+                    <div className="w-full flex-1">
+                        <img src={heroImage} alt="Two lab professionals working at the bench" className="mx-auto h-56 w-full max-w-md rounded-lg object-cover sm:h-64 md:h-80 md:max-w-none"/>
             </div>
-          </div>
-          <div className="flex-1">
-            <img
-              src={heroImage}
-              alt="Two lab professionals working at the bench"
-              className="h-64 w-full rounded-lg object-cover sm:h-72 md:h-80"
-            />
-          </div>
-        </div>
-      </section>
+    </div>
+     </section>
 
       {/* Trust Bar */}
       <section className="border-y bg-slate-50 py-5">
         <div className="mx-auto flex max-w-6xl flex-wrap justify-center gap-6 px-4 text-sm text-gray-600 md:justify-between">
-          <div className="flex items-center gap-2"><FiClock className="text-primary" /> 7+ Years Experience</div>
-          <div className="flex items-center gap-2"><FiUsers className="text-primary" /> Trusted by Patients & Clinics</div>
-          <div className="flex items-center gap-2"><FiAward className="text-primary" /> Quality Laboratory Services</div>
+          <div className="flex items-center gap-2"><FiClock className="text-primary"/> 7+ Years Experience</div>
+          <div className="flex items-center gap-2"><FiUsers className="text-primary"/> Trusted by Patients & Clinics</div>
+          <div className="flex items-center gap-2"><FiAward className="text-primary"/> Quality Laboratory Services</div>
         </div>
       </section>
 
@@ -74,8 +73,7 @@ export default function Home() {
                 <img
                   src={service.img}
                   alt={service.title}
-                  className="h-40 w-full object-cover"
-                />
+                  className="h-40 w-full object-cover"/>
                 <div className="p-4">
                   <h3 className="font-medium">{service.title}</h3>
                   <p className="mt-1 text-sm text-gray-600">{service.desc}</p>
@@ -118,10 +116,10 @@ export default function Home() {
         <p className="mt-1 text-sm text-gray-600">Contact us to book or ask any questions.</p>
         <Link
           to="/contact"
-          className="mt-3 inline-block rounded-md bg-primary px-5 py-2 text-sm font-medium text-white"
-        >
+          className="mt-3 inline-block rounded-md bg-primary px-5 py-2 text-sm font-medium text-white">
           Contact Us
         </Link>
+
       </section>
     </div>
   );

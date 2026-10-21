@@ -56,7 +56,7 @@ function SampleList() {
         </Link>
       </div>
 
-      {/* Search + Filter */}
+      {/* Search $ Filter */}
       <div className="mb-6 flex flex-col gap-3 sm:flex-row">
         <input
           type="text" placeholder="Search by name, ID, or test..." value={search} onChange={(e) => setSearch(e.target.value)}
