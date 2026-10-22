@@ -75,14 +75,12 @@ export default function Services() {
     key={service.title}
     className={`flex flex-col items-center gap-8 md:flex-row ${
       index % 2 === 1 ? "md:flex-row-reverse" : ""
-    }`}
-  >
+    }`}>
     <div className="w-full md:w-1/2">
   <img
     src={service.img}
     alt={service.alt}
-    className="max-h-72 w-full rounded-lg object-contain md:max-h-80"
-  />
+    className="max-h-72 w-full rounded-lg object-contain md:max-h-80" />
 </div>
 
     <div className="w-full md:w-1/2">
@@ -99,12 +97,12 @@ export default function Services() {
             Need to book a test or ask a question?
           </p>
           <Link
-          to="/contact"className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
->
-  Contact the lab
-  <IoArrowForward className="text-base" />
-</Link>        </div>
-      </div>
+          to="/contact"className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline">
+            Contact the lab 
+            <IoArrowForward className="text-base" />
+            </Link>       
+             </div>
+             </div>
     </div>
   );
 }

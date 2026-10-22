@@ -6,6 +6,7 @@ function Dashboard() {
   const [samples, setSamples] = useState([]);
   const [loading, setLoading] = useState(true);
 
+//   data fetching
   useEffect(() => {
     async function load() {
       const data = await getSamples();
@@ -14,11 +15,11 @@ function Dashboard() {
     }
     load();
   }, []);
-
+// counting by status
   const received = samples.filter((s) => s.status === "received").length;
   const processing = samples.filter((s) => s.status === "processing").length;
   const completed = samples.filter((s) => s.status === "completed").length;
-
+// loading state- that shows message while waiting for data load
   if (loading) {
     return <div className="py-16 text-center">Loading dashboard...</div>;
   }
@@ -37,7 +38,7 @@ function Dashboard() {
           <p className="text-sm text-muted-foreground">Processing</p>
           <p className="mt-1 text-3xl font-semibold text-amber-600">{processing}</p>
         </div>
-        
+
         <div className="rounded-lg border bg-white p-5">
           <p className="text-sm text-muted-foreground">Completed</p>
           <p className="mt-1 text-3xl font-semibold text-green-600">{completed}</p>

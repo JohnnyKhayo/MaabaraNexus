@@ -12,13 +12,12 @@ export default function About() {
           A trusted laboratory focused on accurate testing and clear results.
         </p>
 
-        {/* Image + Text */}
+        {/* Image +text (grid layouts*/}
         <div className="mt-8 grid items-center gap-8 md:grid-cols-2">
           <img
             src={aboutImage}
             alt="Laboratory professionals at work"
-            className="h-64 w-full rounded-lg object-cover md:h-80"
-          />
+            className="h-64 w-full rounded-lg object-cover md:h-80"/>
           <div>
             <h2 className="text-xl font-semibold md:text-2xl">Who We Are</h2>
             <p className="mt-3 text-muted-foreground">
@@ -28,7 +27,7 @@ export default function About() {
           </div>
         </div>
 
-        {/* Mission / Approach / Commitment */}
+        {/* Mission/ Approach/ Commitment */}
         <div className="mt-12 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
           <div className="rounded-lg border bg-slate-50 p-5">
             <FiTarget className="mb-3 text-2xl text-primary" />
@@ -59,8 +58,7 @@ export default function About() {
         <div className="mt-12 text-center">
           <Link
             to="/contact"
-            className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
-          >
+            className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline">
             Get in touch with us
             <IoArrowForward className="text-base" />
           </Link>

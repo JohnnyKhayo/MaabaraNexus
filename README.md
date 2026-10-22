@@ -60,7 +60,7 @@ The application uses Firebase for authentication and data storage, ensuring real
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/maabara-nexus.git
+git clone https://github.com/JohnnyKhayo/MaabaraNexus.git
 cd maabara-nexus
 ```
 ## 2. Install dependencies
@@ -119,7 +119,7 @@ src/
 ├── components/
 │   ├── layout/
 │   ├── samples/
-│   └── shared/
+│ 
 ├── pages/
 ├── context/
 ├── services/

@@ -15,7 +15,7 @@ export default function Register() {
   async function handleSubmit(e) {
     e.preventDefault();
     setError("");
-
+// validation bfr calling Firebase
     if (!name || !email || !password || !confirmPassword) {
       setError("Please fill in all fields.");
       return;
@@ -30,12 +30,13 @@ export default function Register() {
       setError("Password must be at least 6 characters.");
       return;
     }
-
+// submit
     try {
       setSubmitting(true);
       await register(name, email, password);
       navigate("/");
     } catch (err) {
+        // handle Firebase errors
       if (err.code === "auth/email-already-in-use") {
         setError("This email is already registered. Please login instead.");
       } else if (err.code === "auth/weak-password") {
@@ -90,7 +91,7 @@ export default function Register() {
               {error}
             </p>
           )}
-
+         {/*button state  */}
           <button
             type="submit" disabled={submitting}
             className="w-full rounded-md bg-primary py-2.5 text-sm font-medium text-primary-foreground disabled:opacity-60">

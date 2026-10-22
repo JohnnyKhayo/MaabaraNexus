@@ -17,8 +17,7 @@ function SampleCard({ sample }) {
           <p className="text-sm text-muted-foreground">{sample.testType}</p>
         </div>
         <span
-          className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium capitalize ${statusStyles[sample.status]}`}
-        >
+          className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium capitalize ${statusStyles[sample.status]}`}>
           {sample.status}
         </span>
       </div>

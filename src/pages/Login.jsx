@@ -6,9 +6,10 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+//   get login function
   const { login } = useAuth();
   const navigate = useNavigate();
-
+{/* submit handler */}
   async function handleSubmit(e) {
     e.preventDefault();
     setError("");
@@ -17,6 +18,7 @@ export default function Login() {
       await login(email, password);
       navigate("/");
     } catch (err) {
+        // diff msgs based of firebase error code
       if (err.code === "auth/user-not-found" || err.code === "auth/invalid-credential") {
         setError("No account found with this email or wrong password.");
       } else if (err.code === "auth/wrong-password") {
@@ -36,7 +38,7 @@ export default function Login() {
         <p className="mb-6 text-sm text-muted-foreground">
           Sign in to your account.
         </p>
-
+        
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium">Email</label>
@@ -51,7 +53,7 @@ export default function Login() {
               type="password" value={password} onChange={(e) => setPassword(e.target.value)}
               className="mt-1 w-full rounded-md border px-3 py-2" required/>
           </div>
-
+            {/* error display*/}
           {error && (
             <p className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-600">
               {error}

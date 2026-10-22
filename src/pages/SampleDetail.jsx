@@ -5,6 +5,7 @@ import { getSampleById, updateSample, deleteSample } from "../services/api";
 import { IoArrowBack } from "react-icons/io5";
 
 export default function SampleDetail() {
+
   const { id } = useParams();
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -19,7 +20,7 @@ export default function SampleDetail() {
   const [deleting, setDeleting] = useState(false);
   const [success, setSuccess] = useState("");
   const [showConfirm, setShowConfirm] = useState(false);
-
+// loading sample
   useEffect(() => {
     async function loadSample() {
       try {
@@ -38,7 +39,7 @@ export default function SampleDetail() {
     }
     loadSample();
   }, [id]);
-
+// update
   async function handleUpdate(e) {
     e.preventDefault();
     setError("");
@@ -58,7 +59,9 @@ export default function SampleDetail() {
 
       setSuccess("Sample updated successfully.");
       setTimeout(() => setSuccess(""), 3000);
-    } catch (err) {
+    } 
+    // 
+    catch (err) {
       setError("Failed to update sample. Please try again.");
     } finally {
       setSaving(false);
@@ -127,20 +130,16 @@ export default function SampleDetail() {
         <div>
           <label className="block text-sm font-medium">Result</label>
           <textarea
-            value={result}
-            onChange={(e) => setResult(e.target.value)}
+            value={result} onChange={(e) => setResult(e.target.value)}
             rows={3}
-            className="mt-1 w-full rounded-md border px-3 py-2"
-            placeholder="Enter result when available"/>
+            className="mt-1 w-full rounded-md border px-3 py-2" placeholder="Enter result when available"/>
         </div>
 
         <div>
           <label className="block text-sm font-medium">Notes</label>
           <textarea
-            value={notes}
-            onChange={(e) => setNotes(e.target.value)}
-            rows={3}
-            className="mt-1 w-full rounded-md border px-3 py-2"
+            value={notes} onChange={(e) => setNotes(e.target.value)}
+            rows={3} className="mt-1 w-full rounded-md border px-3 py-2"
             placeholder="Add or update notes"/>
         </div>
         {/* success update message */}
@@ -157,12 +156,11 @@ export default function SampleDetail() {
             className="rounded-md bg-primary px-5 py-2 text-sm font-medium text-primary-foreground disabled:opacity-60">
             {saving ? "Saving..." : "Update Sample"}
           </button>
-
+          
+          {/* admin only can delete */}
           {user?.role === "admin" && (
             <button
-              type="button"
-              onClick={handleDeleteClick}
-              disabled={deleting}
+              type="button" onClick={handleDeleteClick} disabled={deleting}
               className="rounded-md bg-red-600 px-5 py-2 text-sm font-medium text-white hover:bg-red-700 disabled:opacity-60">
               {deleting ? "Deleting..." : "Delete Sample"}
             </button>
@@ -177,21 +175,17 @@ export default function SampleDetail() {
             
             <div className="mt-3 flex gap-2">
               <button
-                type="button"
-                onClick={confirmDelete}
-                disabled={deleting}
-                className="rounded bg-red-600 px-4 py-1.5 text-sm text-white disabled:opacity-60">
+                type="button" onClick={confirmDelete} disabled={deleting} className="rounded bg-red-600 px-4 py-1.5 text-sm text-white disabled:opacity-60">
                 {deleting ? "Deleting..." : "Yes, Delete"}
               </button>
               <button
-                type="button"
-                onClick={() => setShowConfirm(false)}
-                className="rounded border px-4 py-1.5 text-sm">
+                type="button" onClick={() => setShowConfirm(false)} className="rounded border px-4 py-1.5 text-sm">
                 Cancel
               </button>
             </div>
           </div>
         )}
+        
       </form>
   
     </div>

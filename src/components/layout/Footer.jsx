@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function Footer() {
+function Footer() {
   return (
     <footer className="mt-auto border-t bg-slate-50">
       <div className="mx-auto max-w-6xl px-4 py-10">
@@ -59,3 +59,4 @@ export default function Footer() {
     </footer>
   );
 }
+export default Footer

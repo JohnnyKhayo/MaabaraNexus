@@ -22,8 +22,7 @@ export default function Home() {
   <div>
       {/* Top accent bar */}
       <section className="bg-blue-800 py-2.5 text-center text-sm text-white">
-        Reliable laboratory results with careful sample handling.{" "}
-        <Link to="/contact" className="underline">Contact us</Link>
+        Reliable laboratory results with careful sample handling.
       </section>
 
       {/* Hero */}
@@ -36,22 +35,22 @@ export default function Home() {
 
         <p className="mt-3 text-base text-gray-600 sm:text-lg">
             Professional laboratory services with careful sample handling and clear results you can rely on.
-                        </p>
+            </p>
 
                 <div className="mt-5 flex flex-wrap justify-center gap-3 md:justify-start">
-                            <Link to="/contact" className="rounded bg-primary px-5 py-2.5 text-sm text-white">
+                     <Link to="/contact" className="rounded bg-primary px-5 py-2.5 text-sm text-white">
                             Book a Test
                             </Link>
             <Link to="/services" className="rounded border px-5 py-2.5 text-sm">
                     Our Services
                      </Link>
                         </div>
-                            </div>
+                        </div>
 
                     <div className="w-full flex-1">
                         <img src={heroImage} alt="Two lab professionals working at the bench" className="mx-auto h-56 w-full max-w-md rounded-lg object-cover sm:h-64 md:h-80 md:max-w-none"/>
-            </div>
-    </div>
+                    </div>
+                </div>
      </section>
 
       {/* Trust Bar */}
@@ -68,6 +67,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-4">
           <h2 className="mb-6 text-center text-2xl font-semibold">Our Services</h2>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {/* rendering cards */}
             {services.map((service) => (
               <div key={service.title} className="overflow-hidden rounded-lg border bg-stone-50 shadow-sm">
                 <img
@@ -89,7 +89,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Mission Vision Values */}
+      {/* Mission Vision/ Values */}
       <section className="bg-blue-50 py-10">
         <div className="mx-auto grid max-w-6xl gap-6 px-4 md:grid-cols-3">
           <div className="rounded bg-white p-5">
@@ -110,7 +110,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Call to Action */}
+      {/*CTA */}
       <section className="border-t py-8 text-center">
         <h2 className="text-xl font-semibold">Need a laboratory test?</h2>
         <p className="mt-1 text-sm text-gray-600">Contact us to book or ask any questions.</p>

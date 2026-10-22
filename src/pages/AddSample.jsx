@@ -17,11 +17,13 @@ function AddSample() {
   const [showConfirm, setShowConfirm] = useState(false);
   const navigate = useNavigate();
 
+//   controlled inputs
   function handleChange(e) {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   }
-
+// 2-step submit
+// 1st btn
   function handleReview(e) {
     e.preventDefault();
     setError("");
@@ -33,7 +35,7 @@ function AddSample() {
 
     setShowConfirm(true);
   }
-
+// 2nd button
   async function handleConfirm() {
     try {
       setSubmitting(true);
@@ -95,10 +97,10 @@ function AddSample() {
 
         {error && <p className="text-sm text-red-600">{error}</p>}
 
+{/* conditional renedring */}
         {!showConfirm ? (
-          <button
-            type="submit"
-            className="rounded-md bg-primary px-5 py-2 text-sm font-medium text-primary-foreground">
+          <button 
+          type="submit" className="rounded-md bg-primary px-5 py-2 text-sm font-medium text-primary-foreground">
             Review & Add Sample
           </button>
         ) : (

@@ -37,7 +37,7 @@ export async function addSample(formData) {
   const docRef = await addDoc(samplesCollection, newSample);
   return { id: docRef.id, ...newSample };
 }
-
+// getSampleById(id)
 export async function getSampleById(id) {
   const docRef = doc(db, "samples", id);
   const snapshot = await getDoc(docRef);
@@ -48,7 +48,7 @@ export async function getSampleById(id) {
 
   return { id: snapshot.id, ...snapshot.data() };
 }
-
+// 
 export async function updateSample(id, updates) {
   const docRef = doc(db, "samples", id);
   await updateDoc(docRef, updates);

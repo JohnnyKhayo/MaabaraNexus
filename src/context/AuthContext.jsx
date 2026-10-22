@@ -18,7 +18,7 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       if (firebaseUser) {
-        // Get extra user data (role, name) from Firestore
+        // user logged in > get extra user data (role, name) from Firestore
         const userDoc = await getDoc(doc(db, "users", firebaseUser.uid));
         const userData = userDoc.exists() ? userDoc.data() : {};
 
@@ -51,7 +51,7 @@ export function AuthProvider({ children }) {
 
     return firebaseUser;
   }
-
+//  in and out log(firebase call)
   async function login(email, password) {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     return userCredential.user;
@@ -60,7 +60,7 @@ export function AuthProvider({ children }) {
   function logout() {
     return signOut(auth);
   }
-
+// here providing the values
   const value = { user, login, logout, register, loading };
 
   return (
