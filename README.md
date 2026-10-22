@@ -102,11 +102,9 @@ Open http://localhost:5173 in your browser.
 ## Deployment
 The project is deployed on Vercel.Live Site: https://maabara-nexus.vercel.app/
 
-## Screenshots
-Homepage
-Services
-Sample Management
-Dashboard
+## How the project looks like
+![Homepage](src/assets/home.png)
+![Homepage](src/assets/dashboard.png)
 
 ## Challenges and Lessons Learned
 . Separating public-facing pages from protected laboratory tools required careful route and navbar logic.
@@ -125,9 +123,9 @@ src/
 ├── services/
 ├── firebase.js
 └── App.jsx
-## Author
-Johnstone Khayo
-React Frontend Capstone Project
+## License
+This project was created and build by under MIT license.
+ @ JohnnyKhayo
 
 
 
